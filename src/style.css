@@ -1,4 +1,17 @@
-.breed-select{ 
-    max-width: 230px;
-    margin: 0 auto;
+
+.error{ 
+    display: none;
+}
+.breed-select{
+    margin: 100 auto 0 auto;
+    max-width: 450px;
+}
+.cat-info{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.js-some{ 
+    margin-left: 50px;
 }

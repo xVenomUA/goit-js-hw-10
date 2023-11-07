@@ -1,3 +1,5 @@
+import { Loading } from "notiflix";
+
 const api_key =
   'live_bKkP5sdqYhKCDOuk3F9zZUnhE0OowjsU0wDLGPCIIPurZptzPaUesVO0tQ9QBS2v';
 function fetchBreeds(URL_BREED) {
