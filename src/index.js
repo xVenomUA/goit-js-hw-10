@@ -1,8 +1,7 @@
-import { fetchBreeds } from './cat-api';
+import { fetchBreeds, fetchCatByBreed } from './js/cat-api';
 import SlimSelect from 'slim-select';
-
 import 'slim-select/dist/slimselect.css';
-const URL_BREED = 'https://api.thecatapi.com/v1/breeds';
+
 const URL_SEARCH = 'https://api.thecatapi.com/v1/images/search';
 const BreedSelect = document.querySelector('.breed-select');
 BreedSelect.setAttribute('hidden', true);
@@ -11,7 +10,7 @@ const loader = document.querySelector('.loader');
 const errorr = document.querySelector('.error');
 errorr.style.display = 'none';
 
-fetchBreeds(URL_BREED)
+fetchBreeds()
   .then(data => {
     const markUpSelect = data
       .map(({ name, id }) => `<option value="${id}">${name}</option>`)
@@ -34,20 +33,22 @@ BreedSelect.addEventListener('change', evt => {
   const IDBreed = evt.currentTarget.value;
   CatInfo.innerHTML = '';
   loader.style.display = 'block';
-  fetchBreeds(URL_SEARCH + `?breed_ids=${IDBreed}`)
+  fetchCatByBreed(IDBreed)
     .then(data => {
       const markUpPhoto = data
         .map(
           ({
             url,
             breeds: {
-              0: { name, origin },
+              0: { name, origin, description, temperament },
             },
           }) => `
-  <img src="${url}" alt="${name}" width="${350}" height="${250}">
+  <img src="${url}" alt="${name}" width="${350}" height="${290}">
   <div class="js-some">
-  <p>${name}</p>
-  <p>${origin}</p>
+  <h2 class="hmain-js" >${name}</h2>
+  <h3 class="hmain3-js">${origin}</h3>
+  <p class="text"> ${description}</p>
+  <p class= "text"> Temperament: ${temperament}</p>
   </div>
 `
         )

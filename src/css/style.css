@@ -15,3 +15,11 @@
 .js-some{ 
     margin-left: 50px;
 }
+.text{ 
+    max-width: 300px;
+
+}
+body{ 
+ background-color: #8BC6EC;
+background-image: linear-gradient(175deg, #8BC6EC 0%, #9599E2 100%);
+}
